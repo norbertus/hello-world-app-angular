@@ -25,7 +25,8 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
+# NN 04.07.2022 - line removed
+#          npm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -51,6 +52,9 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'hello-world-app-angular67'
-          slot-name: 'Production'
+# NN 04.07.2022 - line removed
+#          slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E3D1BA4E55E4AD69539DA7A0AE57E63 }}
-          package: .
+# NN 04.07.2022 - line changed
+#          package: .
+          package: ./dist/hello-world-app
